@@ -1,9 +1,12 @@
-.fullpage
+.fullpage, body
     position: relative
+    background: #F0F4FC
 section
     transition: all 0.7s
     &.notNormal
-        transform: skew(-100deg, 100deg) scale(5)
+        transform: scale(3)
+        filter: blur(40px)
+        opacity: 0.5
 .main
     min-height: 100vh
     padding-top: 153px
@@ -12,8 +15,6 @@ section
     height: 100%
     position: relative
     transition: all 0.7s
-    &.notNormal
-        transform: skew(-100deg, 100deg) scale(5)
     &__top
         display: flex
         justify-content: space-between
@@ -49,9 +50,12 @@ section
         padding-left: 60px
     &__prod
         text-decoration: none
+        transition: all 0.6s
+        width: 30%
         &-img
             width: 300px
             height: 200px
+            margin: 0 auto
             display: flex
             justify-content: center
             align-items: center
@@ -66,13 +70,17 @@ section
             margin-top: 10px
             display: block
         path
-            transition: all 0.3s
+            transition: all 0.6s
+            fill: transparent
+            &.orange
+                fill: #E54D24
         &.hide
             opacity: 0.4
             span
                 color: #3763BA
             path
                 fill: #3763BA
+                stroke: #3763BA
         &:hover
             transform: scale(1.1)
 .home
@@ -82,9 +90,6 @@ section
         padding-bottom: 100px
         background: #F0F4FC
         transition: all 0.7s
-        overflow: hidden
-        &.notNormal
-            transform: skew(-100deg, 100deg) scale(5)
         &__title
             margin-bottom: 70px
             font-weight: 600
@@ -97,19 +102,36 @@ section
             display: grid
             grid-template-columns: 2fr 1.4fr 2fr 1.4fr 2fr
             grid-gap: 40px
-        &__block
-            padding: 30px
-            background-color: #fff
-            border-radius: 27px
+        &__el
             &:nth-child(7)
                 grid-column: 2/4
             &:nth-child(8)
                 grid-column: 4/6
+        &__block
+            padding: 30px
+            height: 100%
+            background-color: #fff
+            border-radius: 27px
+            transition: all 0.7s
             span
                 font-weight: 300
                 font-size: 18px
                 line-height: 22px
                 color: #1B1B19
+            path
+                transition: all 0.3s
+        &__el:hover
+            .home-features__block
+                background-color: #3763BA
+                transform: rotateX(360deg)
+                span
+                    color: #FFFFFF
+            &:nth-child(1),&:nth-child(2),&:nth-child(3),&:nth-child(4),&:nth-child(7)
+                path
+                    fill: #fff
+            &:nth-child(5), &:nth-child(6),&:nth-child(8)
+                path
+                    stroke: #fff
         &__img
             width: 50px
             height: 50px
@@ -158,4 +180,252 @@ section
         padding-bottom: 100px
         background: #F0F4FC
         transition: all 0.7s
+        &__last
+            width: calc(100% - 460px)
+        &__title
+            margin: 0
+            margin-bottom: 26px
+            font-weight: 600
+            font-size: 50px
+            line-height: 61px
+            color: #3763BA
+        &__wrap
+            display: flex
+            justify-content: space-between
+        &__main
+            max-width: 380px
+        &__adress
+            font-size: 16px
+            line-height: 20px
+            color: #1B1B19
+            margin-bottom: 8px
+            b
+                font-weight: 600
+        &__map
+            font-size: 16px
+            line-height: 20px
+            text-decoration-line: underline
+            color: #3763BA
+            display: flex
+            align-items: center
+            margin-bottom: 26px
+            img
+                margin-right: 9px
+        &__place
+            margin-bottom: 38px
+            font-weight: 600
+            font-size: 16px
+            line-height: 20px
+            color: #3763BA
+        &__img
+            height: 206px
+            border-radius: 27px
+            overflow: hidden
+            margin-bottom: 39px
+            img
+                width: 100%
+                height: 100%
+                object-fit: cover
+                transition: all 0.3s
+            &:hover
+                img
+                    transform: scale(1.1)
+        &__rekv
+            border: 1px solid #3763BA
+            border-radius: 53px
+            height: 65px
+            width: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+            font-weight: 600
+            font-size: 16px
+            line-height: 20px
+            color: #3763BA
+            text-decoration: none
+            &:hover
+                color: #fff
+                background-color: #3763BA
+        &__people
+            display: flex
+            justify-content: center
+            align-items: center
+            grid-gap: 20px
+            margin-bottom: 60px
+        &__person
+            display: flex
+            align-items: center
+            grid-gap: 20px
+            &-img
+                border-radius: 50%
+                overflow: hidden
+                width: 90px
+                height: 90px
+                img
+                    width: 100%
+                    height: 100%
+            &-text
+                max-width: 180px
+                font-weight: 300
+                font-size: 14px
+                line-height: 19px
+                color: #1B1B19
+                a
+                    display: block
+                    color: #1B1B19
+                    text-decoration: none
+                span
+                    display: block
+                    font-weight: 600
+                    font-size: 16px
+                    line-height: 20px
+                    color: #1B1B19
+        &__form
+            background: #FFFFFF
+            border-radius: 15px
+            padding: 40px 80px
+            position: relative
+            &-title
+                font-weight: 600
+                font-size: 35px
+                line-height: 43px
+                color: #3763BA
+                margin-bottom: 5px
+            &-subtitle
+                font-size: 14px
+                line-height: 17px
+                color: #3763BA
+                margin-bottom: 30px
+            &-top
+                display: flex
+                justify-content: space-between
+                width: 530px
+                max-width: 100%
+                margin-bottom: 15px
+                input
+                    font-family: 'Montserrat'
+                    width: calc(50% - 20px)
+                    border: 0
+                    padding: 15px 0
+                    border-radius: 0
+                    border-bottom: 1px solid #1B1B19
+                    font-weight: 400
+                    font-size: 14px
+                    line-height: 17px
+                    color: #1B1B19
+                    &:focus, &:hover
+                        color: #3763BA
+                        border-bottom: 1px solid #3763BA
+                        outline: none
+            textarea
+                font-family: 'Montserrat'
+                width: 530px
+                max-width: 100%
+                border: 0
+                padding: 10px 0
+                height: 45px
+                border-radius: 0
+                border-bottom: 1px solid #1B1B19
+                font-weight: 400
+                font-size: 14px
+                line-height: 17px
+                color: #1B1B19
+                resize: none
+                &:focus, &:hover
+                    color: #3763BA
+                    border-bottom: 1px solid #3763BA
+                    outline: none
+            &-bottom
+                padding-top: 8px
+                display: flex
+                justify-content: space-between
+                align-items: flex-end
+            &-btn
+                font-family: 'Montserrat'
+                transition: all 0.3s
+                cursor: pointer
+                width: 240px
+                height: 65px
+                display: flex
+                justify-content: center
+                align-items: center
+                background: #3763BA
+                border-radius: 53px
+                font-weight: 600
+                font-size: 16px
+                line-height: 20px
+                color: #FFFFFF
+                border: 1px solid #3763BA
+                &:hover
+                    background: #fff
+                    color: #3763BA
+.file
+    position: absolute
+    top: 155px
+    right: 80px
+    width: 240px
+    display: flex
+    align-items: center
+    cursor: pointer
+    img
+        margin-right: 14px
+    input
+        opacity: 0
+        position: absolute
+        top: 0
+        left: 0
+        width: 0
+        height: 0
         overflow: hidden
+    &__text
+        font-weight: 300
+        font-size: 16px
+        line-height: 20px
+        color: #3763BA
+        small
+            font-size: 14px
+            line-height: 17px
+            display: block
+.check
+    display: flex
+    align-items: center
+    position: relative
+    font-weight: 300
+    font-size: 12px
+    line-height: 15px
+    color: #1B1B19
+    a
+        margin: 0 4px
+        color: #1B1B19
+        &:hover
+            color: #3763BA
+    input
+        width: 0
+        height: 0
+        opacity: 0
+        overflow: hidden
+        margin: 0
+        padding: 0
+        position: absolute
+        top: 0
+        left: 0
+    span
+        border: 1px solid #3763BA
+        border-radius: 50%
+        position: relative
+        width: 19px
+        height: 19px
+        margin-right: 13px
+        &::after
+            content: ""
+            display: none
+            width: 13px
+            height: 13px
+            position: absolute
+            top: 2px
+            left: 2px
+            background: #3763BA
+            border-radius: 50%
+    input:checked + span
+        &::after
+            display: block
