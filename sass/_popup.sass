@@ -92,3 +92,64 @@
                     color: #3763BA
         &____block
             margin-bottom: 17px
+@media(max-width: 991px)
+    .popup
+        &-close
+            right: 25px
+            top: 25px
+        &-rekv
+            padding: 40px
+            &__cont
+                grid-gap: 40px
+        &-call
+            padding: 40px
+            &__form
+                .file
+                    margin-top: 30px
+@media(max-width: 575px)
+    .popup
+        &-rekv
+            max-width: 100vw
+            width: 100vw
+            height: 100vh
+            overflow-y: scroll
+            border-radius: 0
+            padding: 8.13vw 6.25vw
+            &__title
+                font-size: 7.81vw
+                line-height: 100.5%
+                color: #3763BA
+                margin-bottom: 15.63vw
+            &__cont
+                font-size: 4.38vw
+                line-height: 5.31vw
+                columns: 1
+            &__block
+                margin-bottom: 5.31vw
+        &-close
+            right: 6.25vw
+            top: 8.44vw
+            width: 6.25vw
+            height: 6.25vw
+            img
+                width: 100%
+        &-call
+            max-width: 100vw
+            width: 100vw
+            height: 100vh
+            overflow-y: scroll
+            border-radius: 0
+            padding: 21.88vw 6.25vw
+            padding-bottom: 12.81vw
+            &__title
+                font-size: 7.81vw
+                line-height: 100.5%
+                margin-bottom: 5vw
+            &__form
+                margin: 0
+                .file
+                    margin: 0
+                    small
+                        display: block
+            &__btn
+                border: 0.31vw solid #E54D24

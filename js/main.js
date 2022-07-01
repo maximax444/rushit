@@ -6,47 +6,48 @@ $(document).on({
         $('.main__prod').not($(this)).removeClass('hide');
     }
 }, '.main__prod');
+if ($(window).width() > 767) {
+    new fullpage('.fullpage', {
+        onLeave: function (link, index) {
+            console.log(index);
 
-new fullpage('.fullpage', {
-    waterEffect: true,
-    onLeave: function (link, index) {
-        console.log(index);
+            $(link.item).addClass('notNormal');
+            $(index.item).css('z-index', '999');
+            $(link.item).css('z-index', '2');
+            if ($(index.item).hasClass('notNormal')) {
+                $(index.item).removeClass('notNormal');
+            }
+            if (index.index == 2) {
+                let counter = document.querySelectorAll('.counter');
+                let limit = 0;
+                if (limit == counter.length) { return; }
 
-        $(link.item).addClass('notNormal');
-        $(index.item).css('z-index', '999');
-        $(link.item).css('z-index', '2');
-        if ($(index.item).hasClass('notNormal')) {
-            $(index.item).removeClass('notNormal');
-        }
-        if (index.index == 2) {
-            let counter = document.querySelectorAll('.counter');
-            let limit = 0;
-            if (limit == counter.length) { return; }
-
-            for (let i = 0; i < counter.length; i++) {
-                let pos = counter[i].getBoundingClientRect().top; //Позиция блока, считая сверху окна
-                if (counter[i].dataset.stop === "0") {
-                    counter[i].dataset.stop = 1; // Останавливаем перезапуск счета в этом блоке
-                    let x = 0;
-                    limit++; // Счетчик будет запущен, увеличиваем переменную на 1
-                    let int = setInterval(function () {
-                        // Раз в 60 миллисекунд будет прибавляться 50-я часть нужного числа
-                        x = x + Math.ceil(counter[i].dataset.to / 25);
-                        counter[i].innerText = x.toLocaleString();
-                        if (x > counter[i].dataset.to) {
-                            //Как только досчитали - стираем интервал.
-                            counter[i].innerText = (counter[i].dataset.to / 1).toLocaleString();
-                            clearInterval(int);
-                        }
-                    }, 50);
+                for (let i = 0; i < counter.length; i++) {
+                    let pos = counter[i].getBoundingClientRect().top; //Позиция блока, считая сверху окна
+                    if (counter[i].dataset.stop === "0") {
+                        counter[i].dataset.stop = 1; // Останавливаем перезапуск счета в этом блоке
+                        let x = 0;
+                        limit++; // Счетчик будет запущен, увеличиваем переменную на 1
+                        let int = setInterval(function () {
+                            // Раз в 60 миллисекунд будет прибавляться 50-я часть нужного числа
+                            x = x + Math.ceil(counter[i].dataset.to / 25);
+                            counter[i].innerText = x.toLocaleString();
+                            if (x > counter[i].dataset.to) {
+                                //Как только досчитали - стираем интервал.
+                                counter[i].innerText = (counter[i].dataset.to / 1).toLocaleString();
+                                clearInterval(int);
+                            }
+                        }, 50);
+                    }
                 }
             }
+
+
+            console.log(index.index);
         }
+    });
+}
 
-
-        console.log(index.index);
-    }
-});
 var inputs = document.querySelectorAll('.file input');
 Array.prototype.forEach.call(inputs, function (input) {
     var label = input.nextElementSibling,
@@ -67,29 +68,37 @@ Array.prototype.forEach.call(inputs, function (input) {
 $('.home-contacts__rekv').on('click', function (e) {
     e.preventDefault();
     $('.overlay-rekv').addClass('overlay-active');
-    $('body').css("overflow", "hidden");
 });
 $('.header__call, .main__prod').on('click', function (e) {
     e.preventDefault();
     $('.overlay-call').addClass('overlay-active');
-    $('body').css("overflow", "hidden");
 });
 
 
 $('.overlay-rekv').on('click', function (e) {
     if (!(($(e.target).parents('.popup-wrap').length) || ($(e.target).hasClass('popup-wrap')))) {
-        $('body').css("overflow", "visible");
         $('.overlay-rekv').removeClass('overlay-active');
     }
 });
 $('.overlay-call').on('click', function (e) {
     if (!(($(e.target).parents('.popup-wrap').length) || ($(e.target).hasClass('popup-wrap')))) {
-        $('body').css("overflow", "visible");
         $('.overlay-call').removeClass('overlay-active');
     }
 });
 
 $('.popup-close').on('click', function (e) {
-    $('body').css("overflow", "visible");
     $(this).closest('.overlay').removeClass('overlay-active');
 });
+
+if ($(window).width() <= 575) {
+    var items = $('.home-features__el'),
+        per = 5,
+        i = 1,
+        total = 0;
+    $('.home-features__more').on('click', function (e) {
+        e.preventDefault();
+        total = per * (i++);
+        items.slice(0, total).css('display', 'block');
+        $(this)[total >= items.length ? 'hide' : 'show']();
+    }).click();
+}

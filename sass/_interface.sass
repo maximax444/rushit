@@ -20,8 +20,8 @@
 @media (max-width: 575px)
  .container
   width: 100%
-  padding-left: 8px
-  padding-right: 8px
+  padding-left: 6.25vw
+  padding-right: 6.25vw
   margin: auto
 .header
  padding: 19px 0
@@ -91,3 +91,69 @@
     border-right: 2px solid#E54D24
    &:hover
     opacity: 0.7
+@media(max-width: 1199px)
+ .header
+  background-color: #F0F4FC
+  &__main, &__info
+   grid-gap: 30px
+@media(max-width: 991px)
+ .header
+  &__links
+   display: block
+   a
+    display: block
+    padding: 0
+    &:first-child
+     border: 0
+     padding: 0
+@media(max-width: 767px)
+ .header
+  position: static
+  &__wrap
+   display: block
+  &__main
+   max-width: 100%
+   justify-content: space-between
+  &__info
+   display: block
+  &__call
+   margin: 0 auto
+  &__links
+   display: flex
+   justify-content: center
+   padding: 20px 0
+   a
+    padding: 0 30px
+    &:first-child
+     border-right: 2px solid #E54D24
+     padding: 0 30px
+@media(max-width: 575px)
+ .header
+  padding-top: 2.81vw
+  padding-bottom: 9.06vw
+  border-bottom: 0.31vw solid #1B1B19
+  &__logo
+   width: 48.75vw
+   img
+    width: 100%
+  &__top
+   width: 17.50vw
+   img
+    width: 100%
+  &__links
+   padding-top: 7.19vw
+   padding-bottom: 8.75vw
+   a
+    font-size: 4.38vw
+    line-height: 5.31vw
+    padding-right: 0
+    padding-left: 5.31vw
+    &:first-child
+     padding-left: 0
+     padding-right: 5.31vw
+     border-right: 0.63vw solid #E54D24
+  &__call
+   width: 66.25vw
+   height: 12.81vw
+   font-size: 4.38vw
+   line-height: 5.31vw

@@ -1,12 +1,13 @@
 .fullpage, body
     position: relative
     background: #F0F4FC
-section
-    transition: all 0.7s
-    &.notNormal
-        transform: scale(3)
-        filter: blur(40px)
-        opacity: 0.5
+@media(min-width: 768px)
+    section
+        transition: all 0.7s
+        &.notNormal
+            transform: scale(3)
+            filter: blur(40px)
+            opacity: 0.5
 .main
     min-height: 100vh
     padding-top: 153px
@@ -15,6 +16,7 @@ section
     height: 100%
     position: relative
     transition: all 0.7s
+    z-index: 999
     &__top
         display: flex
         justify-content: space-between
@@ -81,6 +83,35 @@ section
             path
                 fill: #3763BA
                 stroke: #3763BA
+        &:nth-child(2)
+            span
+                transition: all 0.6s
+            .main__prod-img
+                position: relative
+                &::after
+                    content: ""
+                    width: 100%
+                    height: 100%
+                    position: absolute
+                    transition: all 0.6s
+                    top: 0
+                    left: 0
+                    display: block
+                    background: url('../img/prod2-hide.svg') center no-repeat
+                    opacity: 0
+            &.hide
+                opacity: 1
+                position: relative
+                .main__prod-img
+                    position: relative
+                    &::after
+                        opacity: 0.4
+                span
+                    color: #3763BA
+                    opacity: 0.4
+                path
+                    fill: transparent
+                    stroke: transparent
         &:hover
             transform: scale(1.1)
 .home
@@ -90,6 +121,8 @@ section
         padding-bottom: 100px
         background: #F0F4FC
         transition: all 0.7s
+        &__more
+            display: none
         &__title
             margin-bottom: 70px
             font-weight: 600
@@ -399,6 +432,8 @@ section
         color: #1B1B19
         &:hover
             color: #3763BA
+    b
+        font-weight: 300
     input
         width: 0
         height: 0
@@ -429,3 +464,333 @@ section
     input:checked + span
         &::after
             display: block
+@media(max-width: 1479px)
+    .main
+        &__top
+            padding: 0
+        &__title
+            font-size: 75px
+    .home
+        &-contacts
+            &__last
+                width: calc(100% - 350px)
+            &__main
+                max-width: 320px
+            &__person
+                grid-gap: 10px
+                &-text
+                    max-width: calc(100% - 100px)
+                    span
+                        font-size: 15px
+            &__form
+                .file
+                    padding-top: 15px
+                    position: static
+                &-top, textarea
+                    width: 100%
+@media(max-width: 1199px)
+    .main
+        &__title
+            font-size: 65px
+        &__wrap
+            padding: 0
+    .home
+        &-features
+            &__wrap
+                grid-template-columns: repeat(3, 1fr)
+            &__el
+                &:nth-child(7)
+                    grid-column: 1/3
+                &:nth-child(8)
+                    grid-column: auto
+        &-nav
+            background-size: contain
+        &-contacts
+            &__wrap
+                display: block
+            &__main
+                max-width: 50%
+            &__last
+                width: 100%
+                padding-top: 50px
+@media(max-width: 991px)
+    .main
+        &__top
+            display: block
+        &__man
+            margin: 0 auto
+            margin-top: 40px
+        &__prod
+            &-img
+                max-width: 100%
+            span
+                font-size: 28px
+    .home
+        &-contacts
+            &__form
+                .check
+                    padding: 30px 0
+                &-bottom
+                    display: block
+        &-nums
+            &__wrap
+                grid-template-columns: 1fr 1fr
+                grid-gap: 40px
+@media(max-width: 767px)
+    .main
+        position: static
+        padding: 40px 0
+        &__title
+            font-size: 52px
+            line-height: normal
+        &__prod
+            span
+                font-size: 22px
+    .home
+        &-features
+            padding: 40px 0
+            min-height: 100px
+            &__wrap
+                grid-template-columns: repeat(2,1fr)
+            &__el
+                &:nth-child(7)
+                    grid-column: auto
+        &-nums
+            padding: 40px 0
+            min-height: 100px
+            &__block
+                span
+                    font-size: 70px
+        &-contacts
+            padding: 40px 0
+            min-height: 100px
+            &__main
+                max-width: 100%
+            &__people
+                display: block
+            &__person
+                margin: 0 auto
+                width: 60%
+                margin-bottom: 20px
+@media(max-width: 575px)
+    .main
+        padding-top: 13.44vw
+        padding-bottom: 10vw
+        min-height: 0
+        &__title
+            font-size: 7.81vw
+            line-height: 9.38vw
+        &__top
+            margin-bottom: 12.19vw
+        &__man
+            width: 54.38vw
+            height: 54.38vw
+            margin-top: 20.31vw
+            border: 8.44vw solid #E54D24
+            img
+                max-width: calc( 100% + 16.88vw )
+                margin-bottom: -8.44vw
+        &__prod
+            width: auto
+            &:nth-child(2)
+                order: 3
+            &-img
+                margin-bottom: 4.38vw
+                width: 25vw
+                height: 23.44vw
+                svg
+                    max-width: 100%
+                    max-height: 100%
+            span
+                text-align: center
+                font-weight: 800
+                font-size: 4.38vw
+                line-height: 85.9%
+                margin: 0
+    .home
+        &-features
+            padding: 10vw 0
+            &__title
+                font-size: 7.81vw
+                line-height: 9.38vw
+                margin-bottom: 12.81vw
+            &__el
+                display: none
+            &__wrap
+                display: block
+            &__block
+                margin-bottom: 5.63vw
+                border-radius: 4.38vw
+                padding: 6.88vw 5vw
+                padding-bottom: 10vw
+                span
+                    font-size: 4.38vw
+                    line-height: 5.31vw
+            &__img
+                margin-bottom: 4.69vw
+            &__more
+                border: 0.31vw solid #3763BA
+                border-radius: 16.56vw
+                margin-top: 11.88vw
+                width: 100%
+                height: 12.81vw
+                display: flex
+                justify-content: center
+                align-items: center
+                font-weight: 600
+                font-size: 4.38vw
+                line-height: 5.31vw
+                text-align: center
+                color: #3763BA
+        &-nums
+            padding-top: 3.75vw
+            padding-bottom: 21.88vw
+            background: #F0F4FC url("../img/home-nums.svg") 40% center no-repeat
+            background-size: cover
+            &__wrap
+                padding: 0 4.69vw
+                padding-top: 3.44vw
+                grid-gap: 9.69vw 17.19vw
+            &__block
+                &:nth-child(2)
+                    order: 5
+                    grid-column: 1/3
+                span
+                    font-size: 12.50vw
+                    margin-bottom: 0
+                    line-height: 110%
+                    position: relative
+                    display: inline-block
+                    &::after
+                        content: ""
+                        display: block
+                        width: calc(100% + 7.81vw)
+                        min-width: 15.94vw
+                        height: 0.31vw
+                        position: absolute
+                        bottom: 0
+                        left: 0
+                        background-color: #000000
+                p
+                    font-size: 4.38vw
+                    line-height: 140%
+                    padding-top: 2.81vw
+                    display: inline-block
+                    &::before
+                        display: none
+        &-contacts
+            padding: 0
+            &__title
+                font-size: 7.81vw
+                line-height: 9.38vw
+                margin-bottom: 10.63vw
+            &__adress
+                margin-bottom: 7.81vw
+                font-size: 4.38vw
+                line-height: 5.31vw
+                max-width: 79.69vw
+            &__map
+                font-size: 4.38vw
+                line-height: 5.31vw
+                margin-bottom: 9.38vw
+                img
+                    width: 5.63vw
+                    margin-right: 2.81vw
+            &__place
+                font-size: 4.38vw
+                line-height: 5.31vw
+                margin-bottom: 7.50vw
+            &__img
+                height: 47.19vw
+                border-radius: 8.44vw
+                margin-bottom: 13.75vw
+            &__rekv
+                height: 12.81vw
+                border: 0.31vw solid #3763BA
+                border-radius: 53px
+                font-size: 4.38vw
+                line-height: 5.31vw
+            &__last
+                padding-top: 17.81vw
+            &__people
+                margin-bottom: 21.25vw
+            &__person
+                margin-bottom: 9.69vw
+                width: 100%
+                grid-gap: 6.56vw
+                &-img
+                    width: 28.13vw
+                    height: 28.13vw
+                &-text
+                    max-width: calc(100% - 111px)
+                    font-size: 4.38vw
+                    line-height: 5.94vw
+                    span
+                        font-size: 4.38vw
+                        line-height: 5.31vw
+                        margin-bottom: 2.19vw
+            &__form
+                border-radius: 8.44vw 8.44vw 0px 0px
+                margin-left: -6.25vw
+                margin-right: -6.25vw
+                padding: 14.69vw 6.25vw
+                &-title
+                    font-size: 7.81vw
+                    line-height: 100.5%
+                    margin-bottom: 5.63vw
+                &-subtitle
+                    display: none
+                &-top
+                    display: block
+                    margin-bottom: 0
+                    input
+                        width: 100%
+                        display: block
+                        padding: 6.88vw 0
+                        margin-bottom: 1.56vw
+                        font-size: 4.38vw
+                        line-height: 5.31vw
+                        border-bottom: 0.31vw solid #1B1B19
+                textarea
+                    padding: 6.88vw 0
+                    height: 19.38vw
+                    border-bottom: 0.31vw solid #1B1B19
+                    border-radius: 0
+                .file
+                    width: 56.25vw
+                    padding: 14.06vw 0
+                    img
+                        width: 6.25vw
+                        margin-right: 3.75vw
+                    &__text
+                        font-size: 4.38vw
+                        line-height: 5.31vw
+                        small
+                            font-size: 4.38vw
+                            line-height: 5.31vw
+                &-bottom
+                    padding-top: 0
+                    display: flex
+                    flex-direction: column-reverse
+                &-btn
+                    width: 100%
+                    height: 12.81vw
+                    margin-bottom: 10.31vw
+                    font-size: 4.38vw
+                    line-height: 5.31vw
+                .check
+                    padding: 0
+                    align-items: flex-start
+                    font-size: 4.38vw
+                    line-height: 5.31vw
+                    b
+                        max-width: calc(100% - 10vw)
+                    span
+                        width: 5.94vw
+                        height: 5.94vw
+                        margin-right: 4.06vw
+                        &::after
+                            width: 4.06vw
+                            height: 4.06vw
+                            top: 0.63vw
+                            left: 0.63vw
