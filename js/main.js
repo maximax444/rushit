@@ -6,48 +6,26 @@ $(document).on({
         $('.main__prod').not($(this)).removeClass('hide');
     }
 }, '.main__prod');
-if ($(window).width() > 767) {
-    new fullpage('.fullpage', {
-        onLeave: function (link, index) {
-            console.log(index);
-
-            $(link.item).addClass('notNormal');
-            $(index.item).css('z-index', '999');
-            $(link.item).css('z-index', '2');
-            if ($(index.item).hasClass('notNormal')) {
-                $(index.item).removeClass('notNormal');
-            }
-            if (index.index == 2) {
-                let counter = document.querySelectorAll('.counter');
-                let limit = 0;
-                if (limit == counter.length) { return; }
-
-                for (let i = 0; i < counter.length; i++) {
-                    let pos = counter[i].getBoundingClientRect().top; //Позиция блока, считая сверху окна
-                    if (counter[i].dataset.stop === "0") {
-                        counter[i].dataset.stop = 1; // Останавливаем перезапуск счета в этом блоке
-                        let x = 0;
-                        limit++; // Счетчик будет запущен, увеличиваем переменную на 1
-                        let int = setInterval(function () {
-                            // Раз в 60 миллисекунд будет прибавляться 50-я часть нужного числа
-                            x = x + Math.ceil(counter[i].dataset.to / 25);
-                            counter[i].innerText = x.toLocaleString();
-                            if (x > counter[i].dataset.to) {
-                                //Как только досчитали - стираем интервал.
-                                counter[i].innerText = (counter[i].dataset.to / 1).toLocaleString();
-                                clearInterval(int);
-                            }
-                        }, 50);
-                    }
-                }
-            }
-
-
-            console.log(index.index);
-        }
+if ($(window).width() > 1199) {
+    $(".fullpage").onepage_scroll({
+        sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
+        easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+        // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
+        animationTime: 800,             // AnimationTime let you define how long each section takes to animate
+        pagination: false,                // You can either show or hide the pagination. Toggle true for show, false for hide.
+        updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+        beforeMove: function (index) { },  // This option accepts a callback function. The function will be called before the page moves.
+        afterMove: function (index) { },   // This option accepts a callback function. The function will be called after the page moves.
+        loop: true,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+        keyboard: true,                  // You can activate the keyboard controls
+        responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
+        // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
+        // the browser's width is less than 600, the fallback will kick in.
+        direction: "horizontal"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
     });
 }
 
+$(".fullpage").moveTo(1);
 var inputs = document.querySelectorAll('.file input');
 Array.prototype.forEach.call(inputs, function (input) {
     var label = input.nextElementSibling,
@@ -73,6 +51,10 @@ $('.header__call, .main__prod').on('click', function (e) {
     e.preventDefault();
     $('.overlay-call').addClass('overlay-active');
 });
+$('.home-contacts__map').on('click', function (e) {
+    e.preventDefault();
+    $('.overlay-ya').addClass('overlay-active');
+});
 
 
 $('.overlay-rekv').on('click', function (e) {
@@ -83,6 +65,11 @@ $('.overlay-rekv').on('click', function (e) {
 $('.overlay-call').on('click', function (e) {
     if (!(($(e.target).parents('.popup-wrap').length) || ($(e.target).hasClass('popup-wrap')))) {
         $('.overlay-call').removeClass('overlay-active');
+    }
+});
+$('.overlay-ya').on('click', function (e) {
+    if (!(($(e.target).parents('.popup-wrap').length) || ($(e.target).hasClass('popup-wrap')))) {
+        $('.overlay-ya').removeClass('overlay-active');
     }
 });
 
@@ -102,3 +89,86 @@ if ($(window).width() <= 575) {
         $(this)[total >= items.length ? 'hide' : 'show']();
     }).click();
 }
+
+function sendFormTo(form) {
+    let formData = new FormData(form);
+    let xhr = new XMLHttpRequest();
+    var th = form;
+
+
+    // Валидация
+    var novalidInputs = th.querySelectorAll('[novalid]');
+    for (let i = 0; i < novalidInputs.length; i++) {
+        novalidInputs[i].removeAttribute("novalid");
+    }
+
+    var novalidInputs = 0;
+    for (var key of formData.keys()) {
+        if (formData.get(key) == '' || formData.get(key) == null) {
+            if (key == 'name') {
+                form.querySelector('input[name=' + key + ']').setAttribute("novalid", "true");
+                novalidInputs++
+            }
+            if (key == 'phone') {
+                form.querySelector('input[name=' + key + ']').setAttribute("novalid", "true");
+                novalidInputs++
+            }
+        }
+    }
+
+    if (novalidInputs > 0) {
+        return false;
+    }
+
+    xhr.open("POST", "../mail/mail.php");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                form.reset();
+            }
+        }
+    };
+    xhr.send(formData);
+}
+
+
+document.querySelectorAll('form').forEach(link => {
+    link.addEventListener('submit', function (e) {
+        e.preventDefault();
+        sendFormTo(this);
+    });
+});
+
+// var isMoving = false;
+// setTimeout(function () {
+//     $(window).bind('mousewheel', function (e) {
+//         e.preventDefault();
+//         let now = $('.fullpage').scrollTop() / $(window).width();
+//         console.log(now);
+
+//         if (isMoving) return;
+//         isMoving = true;
+//         console.log(isMoving);
+//         if (now != 0 && now != 1 && now != 2 && now != 3) {
+//             let nowSect = Math.floor($('.fullpage').scrollTop() / $(window).width());
+//             console.log(nowSect);
+//             if (e.originalEvent.wheelDelta / 120 > 0) {
+//                 $('.fullpage').animate({
+//                     scrollTop: (Math.floor($('.fullpage').scrollTop() / $(window).width()) - 1) * $(window).width()
+//                 }, 800);
+//             } else {
+//                 $('.fullpage').animate({
+//                     scrollTop: (Math.floor($('.fullpage').scrollTop() / $(window).width()) + 1) * $(window).width()
+//                 }, 800);
+
+//             }
+
+//         }
+
+//         setTimeout(function () {
+//             isMoving = false;
+//         }, 100);
+
+
+//     });
+// }, 0);

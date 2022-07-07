@@ -8,15 +8,16 @@
     <title>РУСХИТ: РЕМОНТ
         И ОБСЛУЖИВАНИЕ VRV, ЧИЛЛЕРОВ И ВЕНТИЛЯЦИИ</title>
     <link rel="shortcut icon" href="/img/favicon.svg">
+    <link rel="stylesheet" href="fullpage/onepage-scroll.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="fullpage/fullpage.css">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
+
     <header class="header">
         <div class="container">
             <div class="header__wrap">
@@ -39,7 +40,7 @@
         </div>
     </header>
     <div class="fullpage">
-        <section class="section main">
+        <section id="main" class="section main horizontal-scrolling">
             <div class="wrap">
                 <div class="container">
                     <div class="main__top">
@@ -347,7 +348,7 @@
                 </div>
             </div>
         </section>
-        <section class="section notNormal home-features">
+        <section id="features" class="section  home-features">
             <div class="wrap">
                 <div class="container">
                     <h2 class="home-features__title">Наши услуги</h2>
@@ -687,7 +688,7 @@
                 </div>
             </div>
         </section>
-        <section class="section notNormal home-nums">
+        <section id="nums" class="section  home-nums">
             <div class="container">
                 <h2 class="home-features__title">О нас в цифрах</h2>
                 <div class="home-nums__wrap">
@@ -714,41 +715,46 @@
                 </div>
             </div>
         </section>
-        <section class="section notNormal home-contacts">
+        <section id="contacts" class="section  home-contacts ">
             <div class="container">
                 <h2 class="home-contacts__title">Контакты</h2>
                 <div class="home-contacts__wrap">
                     <div class="home-contacts__main">
-                        <div class="home-contacts__adress"><b>Москва,</b> 119602, ул. Мичуринский проспект, Олимпийская
+                        <div class="home-contacts__adress"><b>Москва,</b> 119602, ул. Мичуринский проспект,
+                            Олимпийская
                             деревня, д.1, к.1</div>
                         <a href="" class=" home-contacts__map"><img src="img/home-contacts-map.svg" alt=""> на
                             карте</a>
-                        <div class="home-contacts__place">Для оценки стоимости услуг звоните или приезжайте к нам в офис
+                        <div class="home-contacts__place">Для оценки стоимости услуг звоните или приезжайте к нам в
+                            офис
                         </div>
                         <div class="home-contacts__img">
                             <img src="img/home-contacts.jpg" alt="">
                         </div>
-                        <a href="" class="home-contacts__rekv">РЕКВИЗИТЫ</a>
+                        <a href="" class="home-contacts__rekv">НАШИ РЕКВИЗИТЫ</a>
                     </div>
                     <div class="home-contacts__last">
                         <div class="home-contacts__people">
                             <div class="home-contacts__person">
                                 <div class="home-contacts__person-img"><img src="img/man1.png" alt=""></div>
-                                <div class="home-contacts__person-text"><span>Александр Котов</span>Генеральный директор
+                                <div class="home-contacts__person-text"><span>Александр Котов</span>Генеральный
+                                    директор
                                     <a href="tel:+7 (495) 777-57-56">+7 (495) 777-57-56</a>
                                     <a href="mailto:1@rusheat.ru">1@rusheat.ru</a>
                                 </div>
                             </div>
                             <div class="home-contacts__person">
                                 <div class="home-contacts__person-img"><img src="img/man2.png" alt=""></div>
-                                <div class="home-contacts__person-text"><span>Виталий Исайкин</span>Управляющий директор
+                                <div class="home-contacts__person-text"><span>Виталий Исайкин</span>Управляющий
+                                    директор
                                     <a href="tel:+7 (495) 777-57-56">+7 (495) 777-57-56</a>
                                     <a href="mailto:17@rusheat.ru">17@rusheat.ru</a>
                                 </div>
                             </div>
                             <div class="home-contacts__person">
                                 <div class="home-contacts__person-img"><img src="img/man3.png" alt=""></div>
-                                <div class="home-contacts__person-text"><span>Роман Поддубный</span>Менеджер по продажам
+                                <div class="home-contacts__person-text"><span>Алексей Ванков</span>Менеджер по
+                                    продажам
                                     <a href="tel:+7 (495) 777-57-56">+7 (495) 777-57-56</a>
                                     <a href="mailto:3@rusheat.ru">3@rusheat.ru</a>
                                 </div>
@@ -759,14 +765,14 @@
                             <div class="home-contacts__form-subtitle">Оставьте свои контактные данные и менеджер
                                 свяжется с вами в течение часа.</div>
                             <div class="home-contacts__form-top">
-                                <input type="text" placeholder="Имя" required>
-                                <input type="tel" placeholder="Телефон" required>
+                                <input type="text" name="Имя" placeholder="Имя" required>
+                                <input type="tel" name="Телефон" placeholder="Телефон" required>
                             </div>
-                            <textarea name="" id="" placeholder="Вопрос"></textarea>
+                            <textarea name="Вопрос" id="" placeholder="Вопрос"></textarea>
                             <label class="file">
 
                                 <img src="img/file.svg" alt="">
-                                <input type="file" name="" id="">
+                                <input type="file" name="Файл" id="">
                                 <div class="file__text">
                                     <span>Прикрепить файл</span>
                                     <small>(не более 64 мб)</small>
@@ -784,10 +790,9 @@
                     </div>
                 </div>
             </div>
+        </section>
     </div>
-    </div>
-    </section>
-    </div>
+
     <div class="overlay overlay-rekv">
         <div class="popup-wrap">
             <div class="popup-rekv animate__animated animate__backInUp">
@@ -834,14 +839,14 @@
                 <div class="popup-call__title">Заявка на обратный звонок</div>
                 <form class="home-contacts__form popup-call__form">
                     <div class="home-contacts__form-top">
-                        <input type="text" placeholder="Имя" required>
-                        <input type="tel" placeholder="Телефон" required>
+                        <input type="text" name="Имя" placeholder="Имя" required>
+                        <input type="tel" name="Телефон" placeholder="Телефон" required>
                     </div>
-                    <textarea name="" id="" placeholder="Вопрос"></textarea>
+                    <textarea name="Вопрос" id="" placeholder="Вопрос"></textarea>
                     <label class="file">
 
                         <img src="img/file.svg" alt="">
-                        <input type="file" name="" id="">
+                        <input type="file" name="file" id="">
                         <div class="file__text">
                             <span>Прикрепить файл</span>
                             <small>(не более 64 мб)</small>
@@ -860,9 +865,28 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <div class="overlay overlay-ya">
+        <div class="popup-wrap popup-wrap__ya">
+            <div class="popup-close popup-close__ya"><svg width="37" height="37" viewBox="0 0 37 37" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M36 1L1.00066 35.9993" stroke="#fff" stroke-width="2" />
+                    <path d="M36 35.999L1.00066 0.999678" stroke="#fff" stroke-width="2" />
+                </svg>
+            </div>
+            <div class="popup-ya animate__animated animate__backInUp">
 
-    <script src="fullpage/fullpage.extensions.min.js"></script>
+                <div style="position:relative;overflow:hidden;">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A9ac0e1f8bd36203d7905f1ff59b89b7fbfab80cc5f856c92034f649be25b9c94&amp;source=constructor"
+                        width="100%" height="523" frameborder="0" style="position:relative;border:0;"></iframe>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="fullpage/jquery.onepage-scroll.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
